@@ -1,0 +1,51 @@
+﻿@model WebProjectR.Models.Team
+
+@{
+    ViewBag.Title = "Создание команды";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("Create", "Team", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+
+    @Html.AntiForgeryToken()
+    <h4>Создайте команду, заполнив соответствующие поля.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+<div class="form-group">
+        @Html.LabelFor(m => m.NameTeam, new { @class = "col-md-2 control-label" })
+       <div class="col-md-10">
+            @Html.TextBoxFor(m => m.NameTeam, new { @class = "form-control" })
+      </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.DateCreate, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.DateCreate, new { type = "date", @class = "form-control" })
+    </div>
+</div>
+
+ <div class="form-group">
+     @Html.LabelFor(m => m.Dics.NameDiscipline, new { @class = "col-md-2 control-label" })
+     <div class="col-md-10">
+         @Html.DropDownListFor(m => m.DicsId, ViewBag.Dicsciplines as SelectList, new { @class = "form-control" })
+         </div>
+     </div>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" class="btn btn-default" value="Создать команду" />
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("На главную", "Index", "Home")
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,36 @@
+﻿@model WebProjectR.Models.Team
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Изменение данных о команде</h2>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Команда</legend>
+
+        @Html.HiddenFor(model => model.IdTeam)
+
+        <p>
+            Имя команды <br />
+            @Html.EditorFor(model => model.NameTeam, new { @class = "form-control" })
+        </p>
+
+        <p>
+            Дата создания <br />
+            @Html.EditorFor(model => model.DateCreate, new { type = "date", @class = "form-control" })
+        </p>
+
+        <p>
+            Дисциплина <br />
+            @Html.DropDownListFor(model => model.DicsId, ViewBag.Dicss as SelectList, new { @class = "form-control" })
+        </p>
+        <p>
+            <input type="submit" value="Сохранить" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Вернуться в личный кабинет", "Index", "Manage")
+</div>

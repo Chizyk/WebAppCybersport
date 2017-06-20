@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.js")
+
+    <script type="text/javascript">
+$(document).ready(function(){
+
+$(window).scroll(function(){
+if ($(this).scrollTop() > 100) {
+$('.scrollup').fadeIn();
+} else {
+$('.scrollup').fadeOut();
+}
+});
+
+$('.scrollup').click(function(){
+$("html, body").animate({ scrollTop: 0 }, 600);
+return false;
+});
+
+});
+    </script>
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top"> @* шапка сайта *@
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                    <div class="nav btn btn-group ">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Игры <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu text-left" role="menu">
+                                <li class="btn-default">
+                                    <a href="~/Games/Dota2"><img src="~/fonts/dota2.png">Dota 2 </a> <span class="sr-only">(current)</span>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="btn-default">
+                                    <a href="~/Games/Lol"><img src="~/fonts/lol.jpg">League of legends </a> <span class="sr-only">(current)</span>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="btn-default">
+                                    <a href="~/Games/CSGO"><img src="~/fonts/csgo.png">CS: GO </a> <span class="sr-only">(current)</span>
+                                </li>
+                            </ul>
+                    </div>
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a href="/" style="float:left; margin-top:2px; margin-right:50px; margin-left:15px">
+                    <img src="~/fonts/dota.png"></a>
+                @*@Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="~/Home/Cybersport">О киберспорте  <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="~/Home/About">Общая информация <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="~/Home/Contact">Контактная информация <span class="sr-only">(current)</span></a>
+                    </li>
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year – Вишняков Владислав</p>
+        </footer>
+    </div>
+    <a href="#" class="scrollup">Наверх</a>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

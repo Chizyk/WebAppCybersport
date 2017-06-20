@@ -1,0 +1,14 @@
+﻿
+@model IEnumerable<WebProjectR.Models.Team>
+
+<div id="searchresults">
+    <h3>Все команды по названию : @Model.First().NameTeam</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+        <li><p>Название команды:</p> @item.NameTeam</li>
+        <li><p>Дата создания команды:</p> @item.DateCreate</li>
+        <li><p>Дисциплина:</p> @item.Dics.NameDiscipline</li>
+        }
+    </ul>
+</div>

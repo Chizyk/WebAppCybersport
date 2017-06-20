@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WebProjectR.Models.Team
+
+<h2>Удаление команды</h2>
+<dl>
+    <dt>Название команды</dt>
+    <dd>
+        @Html.DisplayFor(model => model.NameTeam)
+    </dd>
+
+    <dt>Дата создания команды</dt>
+    <dd>
+        @Html.DisplayFor(model => model.DateCreate)
+    </dd>
+
+    <dt>Название дисциплины</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Dics.NameDiscipline)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить"   />
+}
+

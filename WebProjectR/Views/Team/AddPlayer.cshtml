@@ -1,0 +1,53 @@
+﻿@model WebProjectR.Models.PlayerTeam
+
+
+@{
+    ViewBag.Title = "Добавление Игрока в команду";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@using (Html.BeginForm("AddPlayer", "Team", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+
+    @Html.AntiForgeryToken()
+    <h4>Добавте игрока в свою команду.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+   <fieldset>
+        <p>
+            Название команды: <br />
+            @Html.DropDownListFor(model => model.Id, ViewBag.Teams as SelectList, new { @class = "form-control" })
+        </p>
+
+        <p>
+            Игрок 1: <br />
+            @Html.DropDownListFor(model => model.IdIgr1, ViewBag.Players as SelectList, new { @class = "form-control" })
+        </p>
+
+       <p>
+           Игрок 2: <br />
+           @Html.DropDownListFor(model => model.IdIgr1, ViewBag.Players as SelectList, new { @class = "form-control" })
+       </p>
+
+       <p>
+           Игрок 3: <br />
+           @Html.DropDownListFor(model => model.IdIgr1, ViewBag.Players as SelectList, new { @class = "form-control" })
+       </p>
+
+       <p>
+           Игрок 4: <br />
+           @Html.DropDownListFor(model => model.IdIgr1, ViewBag.Players as SelectList, new { @class = "form-control" })
+       </p>
+
+        <p>
+            <input type="submit" value="Добавить игрока" />
+        </p>
+    </fieldset>
+
+}
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
